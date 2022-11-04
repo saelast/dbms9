@@ -1,0 +1,272 @@
+student@student:~$ mongo
+MongoDB shell version v3.4.23
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.23
+Server has startup warnings:
+2022-10-14T09:03:18.416+0530 I STORAGE [initandlisten]
+2022-10-14T09:03:18.416+0530 I STORAGE [initandlisten] ** WARNING: Using the XFS filesystem is
+strongly recommended with the WiredTiger storage engine
+2022-10-14T09:03:18.416+0530 I STORAGE [initandlisten] ** See
+http://dochub.mongodb.org/core/prodnotes-filesystem
+2022-10-14T09:03:21.257+0530 I CONTROL [initandlisten]
+2022-10-14T09:03:21.257+0530 I CONTROL [initandlisten] ** WARNING: Access control is not enabled
+for the database.
+2022-10-14T09:03:21.257+0530 I CONTROL [initandlisten] ** Read and write access to data and
+configuration is unrestricted.
+2022-10-14T09:03:21.257+0530 I CONTROL [initandlisten]
+2022-10-14T09:03:21.257+0530 I CONTROL [initandlisten]
+2022-10-14T09:03:21.257+0530 I CONTROL [initandlisten] ** WARNING:
+/sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+2022-10-14T09:03:21.257+0530 I CONTROL [initandlisten] ** We suggest setting it to 'never'
+2022-10-14T09:03:21.257+0530 I CONTROL [initandlisten]
+2022-10-14T09:03:21.257+0530 I CONTROL [initandlisten] ** WARNING:
+/sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+2022-10-14T09:03:21.257+0530 I CONTROL [initandlisten] ** We suggest setting it to 'never'
+2022-10-14T09:03:21.257+0530 I CONTROL [initandlisten]
+> use sanketmaddy
+switched to db sanketmaddy
+> db.student.insert({name:})
+2022-10-14T09:30:11.584+0530 E QUERY [thread1] SyntaxError: expected expression, got '}'
+@(shell):1:24
+>
+> db.student.insert({name:"Madhav",rollno:41,class:"TE-C"});
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({name:"Sanket",rollno:38,class:"TE-C"});
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({name:"Nandu",rollno:100,class:"TE-C"});
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({name:"",rollno:34,class:"TE-C"});
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({name:"Guru",rollno:04,class:"TE-C"});
+WriteResult({ "nInserted" : 1 })
+> db.student.find()'
+2022-10-14T09:31:55.856+0530 E QUERY [thread1] SyntaxError: unterminated string literal
+@(shell):1:17
+> db.student.find();
+{ "_id" : ObjectId("6348def6de1354b67aa97398"), "name" : "Madhav", "rollno" : 41, "class" : "TE-C" }
+{ "_id" : ObjectId("6348df08de1354b67aa97399"), "name" : "Sanket", "rollno" : 38, "class" : "TE-C" }
+{ "_id" : ObjectId("6348df12de1354b67aa9739a"), "name" : "Nandu", "rollno" : 100, "class" : "TE-C" }
+{ "_id" : ObjectId("6348df1ade1354b67aa9739b"), "name" : "", "rollno" : 34, "class" : "TE-C" }
+{ "_id" : ObjectId("6348df29de1354b67aa9739c"), "name" : "Guru", "rollno" : 4, "class" : "TE-C" }
+> db.student.find().forEach(printjson);
+{
+"_id" : ObjectId("6348def6de1354b67aa97398"),
+"name" : "Madhav",
+"rollno" : 41,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df08de1354b67aa97399"),
+"name" : "Sanket",
+"rollno" : 38,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df12de1354b67aa9739a"),
+"name" : "Nandu",
+"rollno" : 100,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df1ade1354b67aa9739b"),
+"name" : "",
+"rollno" : 34,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df29de1354b67aa9739c"),
+"name" : "Guru",
+"rollno" : 4,
+"class" : "TE-C"
+}
+> db.student.find().pretty();
+{
+"_id" : ObjectId("6348def6de1354b67aa97398"),
+"name" : "Madhav",
+"rollno" : 41,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df08de1354b67aa97399"),
+"name" : "Sanket",
+"rollno" : 38,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df12de1354b67aa9739a"),
+"name" : "Nandu",
+"rollno" : 100,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df1ade1354b67aa9739b"),
+"name" : "",
+"rollno" : 34,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df29de1354b67aa9739c"),
+"name" : "Guru",
+"rollno" : 4,
+"class" : "TE-C"
+}
+> db.student.insert([{name:"aditya",rollno=29,class="TE-C"},{name:"omkar",rollno=90},{name:}])
+2022-10-14T09:36:22.512+0530 E QUERY [thread1] SyntaxError: missing : after property id
+@(shell):1:40
+>
+> db.student.insert([{name:"aditya",rollno=29,class="TEC"},{name:"omkar",rollno=90},{name:"pratik",rollno=33}]);
+2022-10-14T09:36:47.088+0530 E QUERY [thread1] SyntaxError: missing : after property id
+@(shell):1:40
+> db.student.insert([{name:"aditya",rollno:29,class:"TEC"},{name:"omkar",rollno:90},{name:"pratik",rollno:33}]);
+BulkWriteResult({
+"writeErrors" : [ ],
+"writeConcernErrors" : [ ],
+"nInserted" : 3,
+"nUpserted" : 0,
+"nMatched" : 0,
+"nModified" : 0,
+"nRemoved" : 0,
+"upserted" : [ ]
+})
+> db.student.find().pretty()'
+2022-10-14T09:37:26.609+0530 E QUERY [thread1] SyntaxError: unterminated string literal
+@(shell):1:26
+> db.student.find().pretty();
+{
+"_id" : ObjectId("6348def6de1354b67aa97398"),
+"name" : "Madhav",
+"rollno" : 41,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df08de1354b67aa97399"),
+"name" : "Sanket",
+"rollno" : 38,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df12de1354b67aa9739a"),
+"name" : "Nandu",
+"rollno" : 100,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df1ade1354b67aa9739b"),
+"name" : "",
+"rollno" : 34,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df29de1354b67aa9739c"),
+"name" : "Guru",
+"rollno" : 4,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348e068de1354b67aa9739d"),
+"name" : "aditya",
+"rollno" : 29,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348e068de1354b67aa9739e"),
+"name" : "omkar",
+"rollno" : 90
+}
+{
+"_id" : ObjectId("6348e068de1354b67aa9739f"),
+"name" : "pratik",
+"rollno" : 33
+}
+> db.student.update({rollno:34},{$set:{name:"ayush"}},{upsert:true})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.student.find().pretty();
+{
+"_id" : ObjectId("6348def6de1354b67aa97398"),
+"name" : "Madhav",
+"rollno" : 41,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df08de1354b67aa97399"),
+"name" : "Sanket",
+"rollno" : 38,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df12de1354b67aa9739a"),
+"name" : "Nandu",
+"rollno" : 100,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df1ade1354b67aa9739b"),
+"name" : "ayush",
+"rollno" : 34,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df29de1354b67aa9739c"),
+"name" : "Guru",
+"rollno" : 4,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348e068de1354b67aa9739d"),
+"name" : "aditya",
+"rollno" : 29,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348e068de1354b67aa9739e"),
+"name" : "omkar",
+"rollno" : 90
+}
+{
+"_id" : ObjectId("6348e068de1354b67aa9739f"),
+"name" : "pratik",
+"rollno" : 33
+}
+> db.student.remove({class:"TE-B"})
+WriteResult({ "nRemoved" : 1 })
+> db.student.find().pretty();
+{
+"_id" : ObjectId("6348def6de1354b67aa97398"),
+"name" : "Madhav",
+"rollno" : 41,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df08de1354b67aa97399"),
+"name" : "Sanket",
+"rollno" : 38,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df12de1354b67aa9739a"),
+"name" : "Nandu",
+"rollno" : 100,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348df1ade1354b67aa9739b"),
+"name" : "ayush",
+"rollno" : 34,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348e068de1354b67aa9739d"),
+"name" : "aditya",
+"rollno" : 29,
+"class" : "TE-C"
+}
+{
+"_id" : ObjectId("6348e068de1354b67aa9739e"),
+"name" : "omkar",
+"rollno" : 90
+}
+{
+"_id" : ObjectId("6348e068de1354b67aa9739f"),
+"name" : "pratik",
+"rollno" : 33
+}
